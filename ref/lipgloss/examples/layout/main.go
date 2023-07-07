@@ -3,13 +3,13 @@ package main
 // This example demonstrates various Lip Gloss style and layout features.
 
 import (
-	"fmt"
+"fmt"
 	"os"
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/lucasb-eyer/go-colorful"
-	"golang.org/x/term"
+	"golang.org/x/term"	
 )
 
 const (
