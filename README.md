@@ -1,3 +1,9 @@
+
+[![GBR](https://github.com/kachraz/ka-go1/actions/workflows/go.yml/badge.svg)](https://github.com/kachraz/ka-go1/actions/workflows/go.yml)
+
+
+----
+
 <h1 align="center"><code> g1 </code> </h1>
 <h2 align="center"><i> Go stuff being done here </i> </h2>
 
