@@ -16,6 +16,6 @@ var style = lipgloss.NewStyle().
 
 func main() {
 
-	fmt.Println(style.Render("Sup Ngger"))
+	fmt.Println(style.Render("Change"))
 
 }
