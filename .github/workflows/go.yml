@@ -5,7 +5,7 @@ on:
     branches:
       - g1
     paths:
-     - 'go2'
+     - 'go2/**'
 
 jobs:
   build:
