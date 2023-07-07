@@ -1,0 +1,47 @@
+name: Go Build and Release
+
+on:
+  push:
+    branches:
+      - g1
+    paths:
+     - 'go2'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.20
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Build application
+        run: go build -o myapp
+
+      - name: Run tests
+        run: go test ./...
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0
+          release_name: Release v1.0.0
+          draft: false
+          prerelease: false
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: myapp
+          path: ./myapp
