@@ -24,7 +24,7 @@ jobs:
         run: go mod tidy
 
       - name: Build application
-        run: go build -o myapp
+        run: go build -o sc1
 
       - name: Run tests
         run: go test ./...
@@ -43,5 +43,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: myapp
-          path: ./myapp
+          name: sc1
+          path: ./sc1
