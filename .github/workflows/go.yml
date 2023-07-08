@@ -32,16 +32,3 @@ jobs:
       - name: Run tests
         run: go test ./...
 
-      - name: Create release
-        id: create_release
-        uses: elgohr/Github-Release-Action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          title: GA_Rel
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: sc1
-          path: ./sc1
