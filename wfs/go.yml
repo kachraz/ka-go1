@@ -5,6 +5,8 @@ on:
      - 'g1'
    paths:
      - 'go2/**'
+   tags:
+     - '*'
 
 jobs:
   build:
@@ -58,8 +60,11 @@ jobs:
             artifact-name: release-artifact-${{ steps.semantic_version.outputs.version }}
             retention-days: 7
             glob-pattern: '**'
-  
 
-               
-   
+jobs:
+  CreateRelease:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: go2
 
