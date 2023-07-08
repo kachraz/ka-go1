@@ -28,6 +28,10 @@ jobs:
         working-directory: ./go2
 
   release-linux-amd64:
+    permissions:
+      contents: write
+      packages: write
+  
     needs: 
       - build
     name: release linux/amd64
