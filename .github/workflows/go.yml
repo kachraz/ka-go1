@@ -1,10 +1,9 @@
-name: GBR
-
-on:
-  push:
-    branches:
-      - g1
-    paths:
+name:  GBR 
+on: 
+ push:
+   branches:
+     - 'g1'
+   paths:
      - 'go2/**'
 
 jobs:
@@ -31,4 +30,17 @@ jobs:
 
       - name: Run tests
         run: go test ./...
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build 
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        title: MyReleaseMessage     
 
