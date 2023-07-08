@@ -41,5 +41,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "sc1"
+          tag: "v1.0.0"
           
 
