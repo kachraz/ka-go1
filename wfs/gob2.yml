@@ -1,0 +1,56 @@
+name: GoBuild
+
+on:
+  push:
+    branches:
+      - 'g1'
+    paths:
+      - 'go2/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20.5'
+    
+      - name: InstallDeps
+        run: go mod tidy
+        working-directory: ./go2
+        
+      - name: Build
+        run: go build -v
+        working-directory: ./go2
+
+  release-linux-amd64:
+    needs:
+      - build
+    name: release linux/amd64
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: go2/
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: g1  # Specify the branch name
+          path: go2/  # Specify the directory
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: '.'  # Specify the files to include in the release (all files in the go2 directory)
+          tag_name: v1.0.019232839289013218903  # Specify the tag name for the release
+          body: Fuyck Aohnnnnn  # Specify the release notes
+          draft: false  # Specify if the release should be created as a draft or not
+          prerelease: false  # Specify if the release is a pre-release or not
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+
+        
