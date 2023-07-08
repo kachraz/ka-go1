@@ -1,4 +1,4 @@
-name: Go package
+name: GoBuild
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - 'g1'
     paths:
       - 'go2/**'
-      
+
 jobs:
   build:
 
