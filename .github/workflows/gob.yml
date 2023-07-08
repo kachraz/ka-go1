@@ -28,7 +28,8 @@ jobs:
         working-directory: ./go2
 
   release-linux-amd64:
-    needs: build
+    needs: 
+      - build
     name: release linux/amd64
     runs-on: ubuntu-latest
     steps:
