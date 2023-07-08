@@ -43,7 +43,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./  # Specify the files to include in the release
+          files: '*'  # Specify the files to include in the release
           tag_name: v1.0.0  # Specify the tag name for the release
           body: Release notes for v1.0.0  # Specify the release notes
           draft: false  # Specify if the release should be created as a draft or not
