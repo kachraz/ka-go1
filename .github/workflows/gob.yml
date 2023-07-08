@@ -35,8 +35,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: wangyoucao577/go-release-action@v1
-      working-directory: ./go2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        project_path: ./go2
         goos: linux
         goarch: amd64
