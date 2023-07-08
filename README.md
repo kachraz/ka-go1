@@ -1,6 +1,7 @@
 
 [![GBR](https://github.com/kachraz/ka-go1/actions/workflows/go.yml/badge.svg)](https://github.com/kachraz/ka-go1/actions/workflows/go.yml)
 
+[![.github/workflows/release_upload.yml](https://github.com/kachraz/ka-go1/actions/workflows/release_upload.yml/badge.svg)](https://github.com/kachraz/ka-go1/actions/workflows/release_upload.yml)
 
 ----
 
