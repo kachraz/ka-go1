@@ -34,6 +34,9 @@ jobs:
     needs: 
       - build
     runs-on: ubuntu-latest
+    defaults: 
+      run:
+        working-directory: go2
     permissions:
       contents: write
     steps:
@@ -41,6 +44,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "sc1"
-          tag: "v1.0.0"
+          tag: "v0.0.1"
           
 
