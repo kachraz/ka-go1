@@ -31,9 +31,11 @@ jobs:
       needs: 
         - build
       name: Upload Artifacts
+      
       runs-on: ubuntu-latest
       steps:
+        - uses: actions/checkout@v3
         - uses: actions/upload-artifact@v3
           with:
-            name: my-artifact
+            name: Build Artifacts
             path: ./go2 # or path/to/artifact
