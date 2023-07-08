@@ -45,12 +45,20 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-        
+
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           tag_name: joj
           release_name: jojo
+          with:
+            name: Release Artifact
+            path: your_directory/
+            if-no-files-found: error
+            artifact-name: release-artifact-${{ steps.semantic_version.outputs.version }}
+            retention-days: 7
+            glob-pattern: '**'
+  
 
                
    
