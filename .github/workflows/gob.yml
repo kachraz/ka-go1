@@ -30,16 +30,21 @@ jobs:
         run: go build -v
 
   release-linux-amd64:
+    needs:
+      - build
     name: release linux/amd64
     runs-on: ubuntu-latest
     defaults: 
       run:
         working-directory: go2
     steps:
-    - uses: actions/checkout@v3
-    - uses: wangyoucao577/go-release-action@v1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        goos: linux
-        goarch: amd64
+      - uses: actions/checkout@v3
+        with:
+          ref: g1  # Specify the branch name
+          path: go2/  # Specify the directory
+      - uses: wangyoucao577/go-release-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: linux
+          goarch: amd64
         
