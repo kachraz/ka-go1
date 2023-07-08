@@ -10,11 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    defaults: 
-      run:
-        working-directory: ./go2
-    
+    runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v3
 
@@ -41,10 +37,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: b1  # Specify the branch name
-          path: ./go2  # Specify the directory
       - uses: wangyoucao577/go-release-action@v1
         with:
-          project_path: ./go2
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: linux
           goarch: amd64
