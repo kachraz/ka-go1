@@ -44,7 +44,7 @@ jobs:
           path: go2/  # Specify the directory
       - uses: wangyoucao577/go-release-action@v1
         with:
-          project_path: go2
+          project_path: ../go2/
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: linux
           goarch: amd64
