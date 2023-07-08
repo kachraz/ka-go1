@@ -3,13 +3,13 @@ on:
     branches:
       - g1
     paths:
-     - 'go2/**'
+      - 'go2/**'
 
 jobs:
   build:
     name: Create Release
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -20,8 +20,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: v${{ steps.semantic_version.outputs.version }}
+          release_name: Release v${{ steps.semantic_version.outputs.version }}
           body: |
             Changes in this Release
             - First Change
@@ -32,5 +32,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-            tag_name: ${{ github.ref }}
-            release_name: ${{ github.ref }}
+          tag_name: v${{ steps.semantic_version.outputs.version }}
+          release_name: Release v${{ steps.semantic_version.outputs.version }}
+
+      - name: Generate Semantic Version
+        id: semantic_version
+        uses: einaregilsson/semantic-version@v1
+        with:
+          bump: minor
+          tag-prefix: v
