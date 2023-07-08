@@ -31,11 +31,27 @@ jobs:
       - name: Run tests
         run: go test ./...
 
-      - uses: actions/checkout@v3
-      - name: Create a Release
-        uses: elgohr/Github-Release-Action@v4
+      - name: Conditional Release
+        if: ${{ github.ref == 'refs/heads/g1' && startsWith(github.event_path, 'go2/') }}
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: BiggestBooy     
+          tag_name: jojop
+          release_name: jojo
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          tag_name: joj
+          release_name: jojo
+
+               
+   
 
