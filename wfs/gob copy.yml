@@ -1,0 +1,44 @@
+# This fucker finall woks next section will be to make a release 
+
+
+name: GoBuild
+
+on:
+  push:
+    branches:
+      - 'g1'
+    paths:
+      - 'go2/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20.5'
+    
+      - name: InstallDeps
+        run: go mod tidy
+        working-directory: ./go2
+        
+      - name: Build
+        run: go build -v
+        working-directory: ./go2
+
+  UploadArtifacts:    
+      needs: 
+        - build
+      name: Upload Artifacts
+      
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/upload-artifact@v3
+          with:
+            name: Build Artifacts
+            path: ./go2 # or path/to/artifact
