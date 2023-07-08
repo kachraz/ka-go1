@@ -5,8 +5,6 @@ on:
      - 'g1'
    paths:
      - 'go2/**'
-   tags:
-     - 'v*'
 
 jobs:
   build:
