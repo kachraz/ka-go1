@@ -14,11 +14,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get Last Commit
+        id: last_commit
+        run: echo "::set-output name=commit_hash::$(git rev-parse HEAD)"
+
+      - name: Get Commit Count
+        id: commit_count
+        run: echo "::set-output name=count::$(git rev-list --count HEAD)"
+
+      - name: Generate Semantic Version
+        id: semantic_version
+        run: echo "::set-output name=version::1.0.$(( ${{ steps.commit_count.outputs.count }} - 1 ))"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ steps.semantic_version.outputs.version }}
           release_name: Release v${{ steps.semantic_version.outputs.version }}
@@ -34,10 +46,3 @@ jobs:
         with:
           tag_name: v${{ steps.semantic_version.outputs.version }}
           release_name: Release v${{ steps.semantic_version.outputs.version }}
-
-      - name: Generate Semantic Version
-        id: semantic_version
-        uses: einaregilsson/semantic-version@v1
-        with:
-          bump: minor
-          tag-prefix: v
