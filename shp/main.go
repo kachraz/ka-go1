@@ -59,7 +59,11 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 // View funtion
 
 func (m model) View() string {
-	s := "What drive its? \n\n"
+	s := `What drive its
+What is the main 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+`
 
 	for i, choice := range m.choices {
 
