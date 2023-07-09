@@ -63,12 +63,12 @@ func (m model) View() string {
 
 	for i, choice := range m.choices {
 
-		cursor := "" // no cursor if not selected
+		cursor := "  " // no cursor if not selected
 		if m.cursor == i {
-			cursor = ">"
+			cursor = "👉"
 		}
 
-		checked := "" // not selected
+		checked := " " // not selected
 		if _, ok := m.selected[i]; ok {
 			checked = "✅"
 		}
