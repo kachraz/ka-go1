@@ -17,7 +17,7 @@ type model struct {
 
 func initialModel() model {
 	return model{
-		choices:  []string{"Car", "Motorbike", "SpaceShip"},
+		choices:  []string{"Car ", "Motorbike ", "SpaceShip "},
 		selected: map[int]struct{}{},
 	}
 }
