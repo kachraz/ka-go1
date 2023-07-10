@@ -7,7 +7,8 @@ import (
 	"gt3/ba"
 )
 
-func main() {
+func loop() {
 	fmt.Println("Hello World")
-	Ma()
+	ba.Ma()
+
 }
