@@ -5,5 +5,10 @@ import (
 )
 
 func Ban() {
-	fmt.Println("Hello World")
+	text := `
+Once upon a time there was yayay 
+no no no hahaha 	
+	`
+	fmt.Println(text)
+
 }
